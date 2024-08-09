@@ -21,6 +21,7 @@ jobs:
 
     - name: Terraform Init
       run: terraform init
+      working-directory: ./git/web3
 
     - name: Terraform Apply
       run: terraform apply -auto-approve
