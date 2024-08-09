@@ -32,4 +32,4 @@ jobs:
       working-directory: ./web3
 
     - name: Run Docker Container
-      run: docker run -d -p 8087:80 mywebsite:latest
+      run: docker run -d -p 8086:80 mywebsite:latest
