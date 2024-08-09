@@ -1,0 +1,32 @@
+name: Terraform Deployment
+
+on:
+  push:
+    branches:
+      - main  # Adjust the branch as needed
+
+jobs:
+  terraform:
+    name: Run Terraform
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v3
+
+    - name: Set up Terraform
+      uses: hashicorp/setup-terraform@v2
+      with:
+        terraform_version: 1.4.0  # Adjust the version as needed
+
+    - name: Terraform Init
+      run: terraform init
+
+    - name: Terraform Apply
+      run: terraform apply -auto-approve
+
+    - name: Build Docker Image
+      run: docker build -t mywebsite:latest .
+
+    - name: Run Docker Container
+      run: docker run -d -p 8083:80 mywebsite:latest
