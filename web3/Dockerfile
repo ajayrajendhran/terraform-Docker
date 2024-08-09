@@ -2,4 +2,4 @@
 FROM nginx:latest
 
 # Copy the contents of the current directory to /usr/share/nginx/html in the container
-COPY . /usr/share/nginx/html
+COPY web3 /usr/share/nginx/html
