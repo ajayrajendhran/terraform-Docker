@@ -24,10 +24,10 @@ resource "docker_container" "web_container" {
 
   ports {
     internal = 80
-    external = 8070
+    external = 8090
   }
 }
 
 output "website_url" {
-  value = "http://localhost:8070"
+  value = "http://localhost:8090"
 }
