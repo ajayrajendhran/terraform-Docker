@@ -33,24 +33,11 @@ jobs:
 
     - name: Stop Existing Containers
       run: |
-        docker ps -q --filter "ancestor=mywebsite:latest" | xargs -r docker stop
-      working-directory: ./web3
+        docker ps -q --filter "ancestor=mywebsite:latest" | xargs -r docker stop || true
 
     - name: Remove Existing Containers
       run: |
-        docker ps -a -q --filter "ancestor=mywebsite:latest" | xargs -r docker rm
-      working-directory: ./web3
-
-    - name: Check Existing Containers
-      run: |
-        echo "Listing all containers:"
-        docker ps -a
-      working-directory: ./web3
-
-    - name: Check for Port Usage
-      run: |
-        sudo netstat -tuln | grep 8087 || echo "Port 8087 is free"
-      working-directory: ./web3
+        docker ps -a -q --filter "ancestor=mywebsite:latest" | xargs -r docker rm || true
 
     - name: Run Docker Container
       run: docker run -d -p 8087:80 mywebsite:latest
