@@ -31,14 +31,5 @@ jobs:
       run: docker build -t mywebsite:latest .
       working-directory: ./web3
 
-    - name: Stop Existing Containers
-      run: |
-        docker ps -q --filter "ancestor=mywebsite:latest" | xargs -r docker stop || true
-
-    - name: Remove Existing Containers
-      run: |
-        docker ps -a -q --filter "ancestor=mywebsite:latest" | xargs -r docker rm || true
-
     - name: Run Docker Container
-      run: docker run -d -p 8087:80 mywebsite:latest
-      working-directory: ./web3
+      run: docker run -d -p 9090:80 mywebsite:latest
