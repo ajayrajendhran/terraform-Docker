@@ -20,14 +20,14 @@ resource "docker_image" "web_image" {
 
 resource "docker_container" "web_container" {
   image = docker_image.web_image.image_id
-  name  = "my_container"
+  name  = "mywebsite_container"
 
   ports {
     internal = 80
-    external = 8086
+    external = 8083
   }
 }
 
 output "website_url" {
-  value = "http://localhost:8086"
+  value = "http://localhost:8083"
 }
