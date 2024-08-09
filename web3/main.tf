@@ -23,11 +23,11 @@ resource "docker_container" "web_container" {
   name  = "mywebsite_container"
 
   ports {
-    internal = 81
-    external = 9090
+    internal = 8080
+    external = 80
   }
 }
 
 output "website_url" {
-  value = "http://localhost:9090"
+  value = "http://localhost:80"
 }
