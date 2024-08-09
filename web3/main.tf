@@ -23,7 +23,7 @@ resource "docker_container" "web_container" {
   name  = "mywebsite_container"
 
   ports {
-    internal = 80
+    internal = 81
     external = 9090
   }
 }
